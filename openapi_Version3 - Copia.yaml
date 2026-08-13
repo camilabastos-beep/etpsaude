@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Sentinela API
+  version: '1.0'
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /evaluations:
+    post:
+      summary: Criar avaliação
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                tenant_id: "uuid"
+                driver_id: "uuid"
+                type: "biopsicossocial"
+                data: { }
+                created_by: "uuid"
+      responses:
+        '201':
+          description: Avaliação criada
+  /alerts:
+    get:
+      summary: Listar alertas pendentes por tenant
+      parameters:
+        - in: query
+          name: tenant_id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Ação em alerta
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                userId:
+                  type: string
