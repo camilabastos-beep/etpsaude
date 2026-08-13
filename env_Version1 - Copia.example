@@ -1,0 +1,6 @@
+DATABASE_URL=postgres://sentinel:sentinelpass@db:5432/sentineldb
+PORT=3000
+ADMIN_EMAIL=camila.bastos@etp-transparana.com.br
+ADMIN_PASSWORD=Sentinela123!
+GOOGLE_SHEET_ID=
+GOOGLE_CREDENTIALS_PATH=./google-credentials.json

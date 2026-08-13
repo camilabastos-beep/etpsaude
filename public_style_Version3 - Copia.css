@@ -1,0 +1,19 @@
+:root{
+  --dark:#101010;
+  --grey:#9F9F9F;
+  --cyan:#00B7B5;
+  --teal:#205857;
+  --light:#F0F0F0;
+  --bg: #ffffff;
+  --font: 'Roboto', sans-serif;
+}
+body{ font-family:var(--font); margin:0; background:var(--bg); color:var(--dark); }
+.topbar{ display:flex; align-items:center; gap:12px; padding:16px; background:var(--dark); color:white; }
+.logo{ height:36px; }
+.container{ padding:20px; max-width:1100px; margin:0 auto; }
+.cards{ display:flex; gap:16px; margin-bottom:20px; }
+.card{ flex:1; padding:16px; border-radius:8px; background:var(--light); box-shadow:0 1px 3px rgba(0,0,0,0.08); }
+.alert-card{ border-left:6px solid var(--cyan); }
+h2{ margin:0 0 8px 0; font-size:16px; }
+#alertsList ul{ list-style:none; padding:0; }
+#alertsList li{ padding:8px; border-bottom:1px solid #eee; }

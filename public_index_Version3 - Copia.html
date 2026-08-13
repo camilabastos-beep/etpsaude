@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Sentinela - Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <img src="/public/logo.png" alt="Sentinela" class="logo">
+    <h1>Sentinela</h1>
+  </header>
+  <main class="container">
+    <section class="cards">
+      <div class="card">
+        <h2>Motoristas</h2>
+        <p id="driversCount">--</p>
+      </div>
+      <div class="card">
+        <h2>Avaliações (total)</h2>
+        <p id="evalCount">--</p>
+      </div>
+      <div class="card alert-card">
+        <h2>Alertas pendentes</h2>
+        <p id="alertsCount">--</p>
+      </div>
+    </section>
+
+    <section id="alertsList">
+      <h2>Alertas pendentes</h2>
+      <ul id="alerts"></ul>
+    </section>
+  </main>
+
+  <script>
+    async function loadOverview() {
+      try {
+        const res = await fetch('/api/alerts?tenant_id=demo');
+        const alerts = await res.json();
+        document.getElementById('alertsCount').innerText = alerts.length;
+        const list = document.getElementById('alerts');
+        list.innerHTML = alerts.map(a => `<li>${a.alert_type} - ${a.severity} - ${a.status}</li>`).join('');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    loadOverview();
+  </script>
+</body>
+</html>
